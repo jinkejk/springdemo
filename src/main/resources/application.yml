@@ -1,0 +1,8 @@
+server:
+  port: 8000
+
+# 注入类
+person:
+  name: sadsad
+  age: ${random.int}
+  address: ${person.name:haha}
