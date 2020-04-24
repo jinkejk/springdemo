@@ -10,6 +10,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -23,6 +26,12 @@ class DemoApplicationTests {
 	@Test
 	void contextLoads() {
 		System.out.println(person);
+		List strings = new ArrayList<String>();
+		strings.add("sadsada");
+		HashMap<String, Object> stringObjectHashMap = new HashMap<>();
+		stringObjectHashMap.put("1", "21");
+		System.out.println(strings.get(0));
+		System.out.println(stringObjectHashMap.get("1"));
 	}
 
 	@Test
