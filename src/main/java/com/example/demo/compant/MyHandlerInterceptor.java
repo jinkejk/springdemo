@@ -20,6 +20,7 @@ public class MyHandlerInterceptor implements HandlerInterceptor {
         if (StringUtils.isEmpty(user)){
             request.setAttribute("msg", "没有用户!");
             logger.error("preHandle session has no user!");
+            response.sendRedirect("404.html");
             return false;
         }
         return true;

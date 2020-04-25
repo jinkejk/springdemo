@@ -3,15 +3,15 @@ package com.example.demo.config;
 import com.example.demo.compant.MyHandlerInterceptor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 
 @Configuration
-public class MyMvcConfig extends WebMvcConfigurationSupport{
+public class MyMvcConfig extends WebMvcConfigurationSupport {
 
     @Override
     protected void addInterceptors(InterceptorRegistry registry) {
-        //静态资源已经被springboot做好映射
         registry.addInterceptor(new MyHandlerInterceptor())
                 .addPathPatterns("/greeting")
                 .excludePathPatterns("/", "/test");
@@ -21,8 +21,16 @@ public class MyMvcConfig extends WebMvcConfigurationSupport{
     @Override
     protected void addViewControllers(ViewControllerRegistry registry) {
         super.addViewControllers(registry);
-                registry.addViewController("/index.html").setViewName("login");
+                registry.addViewController("/index.html").setViewName("success");
 //                registry.addViewController("/main.html").setViewName("dashbord");
     }
 
+    @Override
+    protected void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/**")
+                .addResourceLocations("classpath:/resources/")
+                .addResourceLocations("classpath:/static/")
+                .addResourceLocations("classpath:/public/");
+        super.addResourceHandlers(registry);
+    }
 }
