@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.exception.MyTestException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -27,14 +28,14 @@ public class MyExceptionHandler {
 //    }
 
     //自适应
-    @ExceptionHandler(Exception.class)
+    @ExceptionHandler(MyTestException.class)
     public String handleException(Exception e, HttpServletRequest request){
         Map<String, Object> map = new HashMap<>();
 
-        //触发框架跳转到 400 页面
-        request.setAttribute("javax.servlet.error.status_code", 400);
+        //触发框架跳转到 404 页面
+        request.setAttribute("javax.servlet.error.status_code", 404);
         map.put("result", true);
-        map.put("message", "error 121212312");
+        map.put("message", e.getMessage());
         return "forward:/error";
     }
 }

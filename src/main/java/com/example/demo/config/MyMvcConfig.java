@@ -7,14 +7,16 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 
+import java.util.ArrayList;
+
 @Configuration
 public class MyMvcConfig extends WebMvcConfigurationSupport {
 
     @Override
     protected void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new MyHandlerInterceptor())
-                .addPathPatterns("/greeting")
-                .excludePathPatterns("/", "/test");
+                .addPathPatterns("/test")
+                .excludePathPatterns("/", "/greeting");
         super.addInterceptors(registry);
     }
 

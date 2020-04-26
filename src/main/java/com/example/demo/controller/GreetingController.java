@@ -7,6 +7,7 @@ package com.example.demo.controller;
 
 
 import com.example.demo.bean.Greeting;
+import com.example.demo.exception.MyTestException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -37,6 +38,9 @@ public class GreetingController {
     @ResponseBody
     @GetMapping("/greeting")
     public Greeting greeting(@RequestParam(value = "name", defaultValue = "World") String name) {
+        if (name.equals("jinke")){
+            throw new MyTestException();
+        }
         return new Greeting(counter.incrementAndGet(), String.format(template, name));
     }
 
