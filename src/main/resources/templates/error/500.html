@@ -8,7 +8,7 @@
 
 <body style="font-family:Microsoft Yahei;" class="king-errorpage-middle">
 	<div class="king-exception-box king-500-page">
-		<img src="${STATIC_URL}img/expre_500.png">
+		<img th:src="@{/images/500.jpg}" width="450" height="250"/>
 		<h1>系统出现异常</h1>
 		<p>努力恢复中，请稍后再试......</p>
 		<p>message: [[${message}]]</p>

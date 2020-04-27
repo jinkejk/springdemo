@@ -6,3 +6,29 @@ person:
   name: sadsad
   age: ${random.int}
   address: ${person.name:haha}
+
+# datasource
+spring:
+  # cache
+  thymeleaf:
+    cache: false
+  datasource:
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost/jpa?serverTimezone=GMT
+    tomcat:
+      driver-class-name: com.mysql.jdbc.Driver
+    platform: org.hibernate.dialect.MySQLDialect
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+logging:
+  file:
+    path: logs
+  level:
+    com:
+      example:
+        demo: trace
