@@ -33,7 +33,7 @@ public class MyExceptionHandler {
         Map<String, Object> map = new HashMap<>();
 
         //触发框架跳转到 404 页面
-        request.setAttribute("javax.servlet.error.status_code", 404);
+        request.setAttribute("javax.servlet.error.status_code", 500);
         map.put("result", true);
         map.put("message", e.getMessage());
         return "forward:/error";

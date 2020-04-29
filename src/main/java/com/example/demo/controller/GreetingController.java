@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicLong;
@@ -45,8 +46,12 @@ public class GreetingController {
     }
 
     @GetMapping("/success")
-    public String success(Map<String, Object> map){
-        map.put("hello", "jinkejk");
-        return "success";
+    public ModelAndView success(){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("success");
+        modelAndView.addObject("test", "jinke");
+
+
+        return modelAndView ;
     }
 }
